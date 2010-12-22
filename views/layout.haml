@@ -1,0 +1,29 @@
+%html
+  %head
+    %title Crowd Interactive - Culture
+    %link{:href => '/stylesheets/screen.css', :type => 'text/css', :rel => 'stylesheet', :media => 'screen, projection'}
+    %link{:href => '/stylesheets/print.css', :type => 'text/css', :rel => 'stylesheet', :media => 'print'}
+    /[if lte IE 8]
+      %link{:href => '/stylesheets/ie.css', :type => 'text/css', :rel => 'stylesheet', :media => 'screen, projection'}
+  %body.one-col
+    #container
+      #header
+        #crowd-logo  
+          %img{:src => 'images/logo.png'}
+          %p
+            Culture
+        %ul.links
+          %li
+            %a{:href => 'core-values'}Core Values
+          %li
+            %a{:href => 'code-standars'}Code Standars
+          %li
+            %a{:href => 'crowd-levels'}Crowd Levels
+          
+      #content
+        =yield
+    #footer
+      %p
+        Crowd Interactive © 2009, This site is protected by copyright,
+        %br
+        Under U.S and international law. All rights reserved.
