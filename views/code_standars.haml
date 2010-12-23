@@ -1,0 +1,235 @@
+%h1
+  Code Standars
+%p
+  Following coding standards apply to modcloth project source code&#58;
+
+%ul
+  %li
+    CamelCase class names.
+  %li
+    2 spaces for indentation (no tabs).
+  %li
+    100 chars length per line, if it's larger than 100 chars length per line, continue in another line indenting with 4 spaces.
+  %li
+    Descriptive variable and function names.
+  %li
+    Spaces between params.
+  %li
+    Spaces between functions.
+  %li
+    No trailing whitespaces or tabs.
+  %li
+    Single quotes when the string is not going to be evaluated.
+  %li
+    Variables and function names underscore delimited.
+  %li
+    Blank line between methods 
+
+%h4
+  Example&#58;
+%code
+
+  require 'alphabetical'
+  %br
+  require 'order'
+  %br
+  %br
+
+  &#35;&#35;
+  %br
+  &#35; Class description
+  %br
+  &#35; @author FirstName SecondName (f.name@domain.com)
+  %br/
+  &#35;&#35;
+  %br
+  class ModelName < SomePackage&#58;&#58;SubPackage
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Extends section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;extend SomePackage&#58;&#58;ReusableClass
+  %br/
+  %br/
+  
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Constants Section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;UPPER_CASE_CONSTANTS = 'it never changes'
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Relationships section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;belongs_to &#58;alphabetical
+  %br/
+  &nbsp;&nbsp;belongs_to &#58;order
+  %br/
+  &nbsp;&nbsp;has_many &#58;alphabetical
+  %br/
+  &nbsp;&nbsp;has_many &#58;order
+  %br/
+  &nbsp;&nbsp;has_many_and_belongs_to &#58;another_model
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Validations section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;validate_existence_of &#58;alphabetical
+  %br/
+  &nbsp;&nbsp;validate_existence_of &#58;order
+  %br/
+  &nbsp;&nbsp;validate_uniqueness_of &#58;field
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Hooks section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;after_save &#58;action_after_save
+  %br/
+  &nbsp;&nbsp;before_filter &#58;action
+  %br/
+  &nbsp;&nbsp;before_save &#58;action_before_save
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Attribute accessors
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;attr_accessor &#58;public_column
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; named_scope section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;named_scope &#58;by_alphabetical, lambda {|param| {&#58;conditions => ["blah = ?", 'blah']}}
+  %br/
+  &nbsp;&nbsp;named_scope &#58;by_order, &#58;conditions => 'state = true'
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; State machine section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;state_machine &#58;state, &#58;initial => 'new' do
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;after_transition &#58;to => 'active', &#58;do => register_log
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;before_transition &#58;to => 'deleted', &#58;do => check_balance
+  %br/
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;event &#58;next do
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transition &#58;to => 'active', &#58;from => 'new', &#58;if => self.email_confirmed
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;end
+  %br/
+  &nbsp;&nbsp;end
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Class(static) methods section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;class << self
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;def get_something_special(param1, param2)
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product.find(&#58;all,
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include    => [another_model]
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#58;join       => [&#58;related_model]
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#58;conditions => ["condition1 = ? AND condition2 <> ?", param1, param2]
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;end
+  %br/
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Instance Methods
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;def another_method(param1, param2)
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;while (condition != 'stop')
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (param1 == param2)
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;condition = 'stop'
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elsif (param2 == CONSTANT_DEFINED)
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;condition = 'nonstop'
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;end
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;self.related_model.each do |row|
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row.do_something
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;end
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;return condition
+  %br/
+  &nbsp;&nbsp;end
+  %br/
+  %br/
+  &nbsp;&nbsp;protected
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Methods that wont be carried to child classes
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;def method_applied_just_for_this_class *params
+  %br/
+  &nbsp;&nbsp;&nbsp;&nbsp;return true
+  %br/
+  &nbsp;&nbsp;end
+  %br/
+  %br/
+  &nbsp;&nbsp;private
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;&#35; Private methods section
+  %br/
+  &nbsp;&nbsp;&#35;&#35;
+  %br/
+  &nbsp;&nbsp;end
+  %br/
