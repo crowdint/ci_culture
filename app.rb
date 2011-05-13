@@ -19,6 +19,6 @@ get '/crowd-levels' do
   haml :crowd_levels
 end
 
-get '/hackathon' do
-  haml :hackathon
+get '/ideoton' do
+  haml :ideoton
 end
