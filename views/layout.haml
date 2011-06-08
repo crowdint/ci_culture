@@ -3,9 +3,11 @@
     %title Crowd Interactive - Culture
     %link{:href => '/stylesheets/screen.css', :type => 'text/css', :rel => 'stylesheet', :media => 'screen, projection'}
     %link{:href => '/stylesheets/print.css', :type => 'text/css', :rel => 'stylesheet', :media => 'print'}
+    %link{:href => '/stylesheets/prettify.css', :type => 'text/css', :rel => 'stylesheet'}
     /[if lte IE 8]
       %link{:href => '/stylesheets/ie.css', :type => 'text/css', :rel => 'stylesheet', :media => 'screen, projection'}
-  %body.one-col
+    %script{:type => "text/javascript", :src => "/javascripts/prettify.js"}
+  %body.one-col{:onload => "prettyPrint()"}
     #container
       #header
         #crowd-logo
