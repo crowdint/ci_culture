@@ -1,0 +1,97 @@
+- content_for :camel_case do
+  \ class ModelName
+  %br/
+  \ end
+  
+- content_for :two_spaces do
+  \ class ModelName
+  %br/
+  \ &nbsp;&nbsp;extend SomePackage::ReusableClass 
+  %br/
+  %br/
+  \ &nbsp;&nbsp;UPPER_CASE_CONSTANTS = 'it never changes' 
+  %br/
+  \ end
+  
+- content_for :one_hundred_characters do
+  \ Product.find(:all,
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;:include => [another_model]
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;:join => [:related_model]
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;:conditions => ["condition1 = ? AND condition2 <> ?", param1, param2]
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;)
+  %br/
+  
+- content_for :descriptive_variable do
+  \ def get_recent_products
+  %br/
+  \ &nbsp;&nbsp; products ||= Product.find(:all,
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:conditions => ["condition1 = ? AND condition2 <> ?", param1, param2]
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+  %br/
+  \ end
+  
+- content_for :spaces_between_params do
+  \ some_cool_method param1, param2, params3
+  
+- content_for :spaces_between_functions do
+  \ def some_method(param)
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  \ def another_method(param1, param2)
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+
+- content_for :no_trailing_whitespaces do
+  \ class AwesomeClass¬
+  %br/
+  \ &nbsp;&nbsp;def some_method(param)¬
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;...
+  %br/
+  \ &nbsp;&nbsp;end¬
+  %br/
+  ¬
+  %br/
+  \ &nbsp;&nbsp;def another_method(param1, param2)¬
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;...
+  %br/
+  \ &nbsp;&nbsp;end¬
+  %br/
+  \ end¬
+  
+- content_for :single_quotes do
+  \ while (condition != 'stop') 
+  %br/
+  \ &nbsp;&nbsp;if (param1 == param2) 
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;condition = 'stop' 
+  %br/
+  \ &nbsp;&nbsp;elsif (param2 == CONSTANT_DEFINED) 
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;condition = 'nonstop' 
+  %br/
+  \ &nbsp;&nbsp;end 
+  %br/
+  \ end
+  %br/
+
+- content_for :underscore_name do
+  \ def some_method(param)
+  %br/
+  \ &nbsp;&nbsp; variable_name = 'some content'
+  %br/
+  \ end
+  %br/

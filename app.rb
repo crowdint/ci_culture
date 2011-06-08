@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
+require 'sinatra/content_for'
 
 get '/' do
   haml :index

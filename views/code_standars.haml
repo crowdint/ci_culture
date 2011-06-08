@@ -1,3 +1,4 @@
+= haml :codes
 %h1
   Code Standars
 %p
@@ -6,28 +7,44 @@
 %ul
   %li
     CamelCase class names.
+  %code.prettyprint
+    = yield_content :camel_case
   %li
     2 spaces for indentation (no tabs).
+  %code.prettyprint
+    = yield_content :two_spaces
   %li
-    100 chars length per line, if it's larger than 100 chars length per line, continue in another line indenting with 4 spaces.
+    100 chars length per line, if it's larger than 100 chars length per line, continue in another line indenting with 44 spaces.
+  %code.prettyprint
+    = yield_content :one_hundred_characters
   %li
     Descriptive variable and function names.
+  %code.prettyprint
+    = yield_content :descriptive_variable
   %li
     Spaces between params.
+  %code.prettyprint
+    = yield_content :spaces_between_params
   %li
     Spaces between functions.
+  %code.prettyprint
+    = yield_content :spaces_between_functions
   %li
     No trailing whitespaces or tabs.
+  %code.prettyprint
+    = yield_content :no_trailing_whitespaces
   %li
     Single quotes when the string is not going to be evaluated.
+  %code.prettyprint
+    = yield_content :single_quotes
   %li
     Variables and function names underscore delimited.
-  %li
-    Blank line between methods 
+  %code.prettyprint
+    = yield_content :underscore_name
 
 %h4
   Example&#58;
-%code
+%code.prettyprint
 
   require 'alphabetical'
   %br
