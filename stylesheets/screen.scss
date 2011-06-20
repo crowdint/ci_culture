@@ -12,3 +12,7 @@
 @import "partials/form";
 @import "partials/two_col";
 @import "partials/one_col";
+
+body.one-col #content code {
+  margin-bottom: 20px !important;
+}

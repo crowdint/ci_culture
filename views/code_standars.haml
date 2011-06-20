@@ -41,6 +41,27 @@
     Variables and function names underscore delimited.
   %code.prettyprint
     = yield_content :underscore_name
+  %li
+    Uses each, instead of for
+  %code.prettyprint
+    = yield_content :each_instead_for
+  %li
+    Replaces repetitive queries with scopes
+  %code.prettyprint
+    = yield_content :queries_and_scopes_bad
+  %code.prettyprint
+    = yield_content :queries_and_scopes_good
+  %li
+    No hide instance variables
+  %code.prettyprint
+    = yield_content :hide_instance_variables_bad
+  %code.prettyprint
+    = yield_content :hide_instance_variables_good
+  %li
+    Visibility modifiers aligned with the class
+  %code.prettyprint
+    = yield_content :visibility_modifiers
+    
 
 %h4
   Example&#58;

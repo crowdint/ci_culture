@@ -73,13 +73,13 @@
   \ end¬
   
 - content_for :single_quotes do
-  \ while (condition != 'stop') 
+  \ while condition != 'stop'
   %br/
-  \ &nbsp;&nbsp;if (param1 == param2) 
+  \ &nbsp;&nbsp;if param1 == param2
   %br/
   \ &nbsp;&nbsp;&nbsp;&nbsp;condition = 'stop' 
   %br/
-  \ &nbsp;&nbsp;elsif (param2 == CONSTANT_DEFINED) 
+  \ &nbsp;&nbsp;elsif param2 == CONSTANT_DEFINED
   %br/
   \ &nbsp;&nbsp;&nbsp;&nbsp;condition = 'nonstop' 
   %br/
@@ -95,3 +95,145 @@
   %br/
   \ end
   %br/
+  
+- content_for :each_instead_for do
+  \ Product.all.each do |product|
+  %br/
+  \ &nbsp;&nbsp;puts product.name
+  %br/
+  \ end
+  %br/
+  
+  
+- content_for :queries_and_scopes_bad do
+  \ ## Bad Code ##
+  %br/
+  %br/
+  \ def index
+  %br/
+  \ &nbsp;&nbsp;@products = Product.where(:user_id => current_user.id).
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; order('created_at desc').
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; limit(10)
+  %br/
+  \ end
+
+- content_for :queries_and_scopes_good do
+  \ ## Good Code ##
+  %br/
+  %br/
+  \ class Product < ActiveRecord::Base
+  %br/
+  \ &nbsp;&nbsp; scope :recent, order('created_at DESC')
+  %br/
+  \ end
+  %br/
+  %br/
+  \ def index
+  %br/
+  \ &nbsp;&nbsp;@products = Product.where(:user_id => current_user.id).
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recent.
+  %br/
+  \ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; limit(10)
+  %br/
+  \ end
+  
+- content_for :hide_instance_variables_bad do
+  \ ## Bad Code ##
+  %br/
+  %br/
+  \ before_filter :get_product
+  %br/
+  %br/
+  \ def edit
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  \ def update
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  \ def show
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  private
+  %br/
+  %br/
+  \ def get_product
+  %br/
+  \ &nbsp;&nbsp; @product = Product.find(params[:id])
+  %br/
+  \ end
+  
+  
+- content_for :hide_instance_variables_good do
+  \ ## Good Code ##
+  %br/
+  %br/
+  \ def edit
+  %br/
+  \ &nbsp;&nbsp;@product = get_product
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  \ def update
+  %br/
+  \ &nbsp;&nbsp;@product = get_product
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  \ def show
+  %br/
+  \ &nbsp;&nbsp;@product = get_product
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ end
+  %br/
+  %br/
+  private
+  %br/
+  %br/
+  \ def get_product
+  %br/
+  \ &nbsp;&nbsp;Product.find(params[:id])
+  %br/
+  \ end
+
+- content_for :visibility_modifiers do
+  \ class AwesomeClass
+  %br/
+  \ &nbsp;&nbsp;
+  %br/
+  \ public
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ protected
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  \ private
+  %br/
+  \ &nbsp;&nbsp;...
+  %br/
+  %br/
+  \ end
